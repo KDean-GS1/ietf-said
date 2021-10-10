@@ -28,7 +28,8 @@ Abstract
    serialization.  Any change to the serialization invalidates its SAID
    thereby ensuring secure immutability evident reasoning with SAIDS
    about serializations or equivalently their SAIDs.  Thus SAIDs better
-   facilitate Ricardian contracts.
+   facilitate Ricardian contracts or other similarly immutably
+   referenced data serializations.
 
    SAIDs are encoded with CESR (Composable Event Streaming
    Representation) which includes a pre-pended derivation code that
@@ -83,10 +84,12 @@ Copyright Notice
 Table of Contents
 
    1.  Introduction
-   2.  Conventions and Definitions
-   3.  Security Considerations
-   4.  IANA Considerations
-   5.  Normative References
+   2.  Derivation Protocol
+     2.1.  Serializations From Mappings
+   3.  Conventions and Definitions
+   4.  Security Considerations
+   5.  IANA Considerations
+   6.  Normative References
    Acknowledgments
    Author's Address
 
@@ -114,21 +117,7 @@ Table of Contents
    content-addressable identifiers require a special derivation
    protocol, method, or process.
 
-   The SAID derivation protocol assumes that the fields in a JSON
-   serialization are ordered in stable, round-trippable, reproducible
-   order, i.e., canonical.  The natural canonical ordering for JSON is
-   called property creation order or field insertion order.  This
-   logical ordering has been supported by the stringify() method in
-   JavaScript with a custom reordering function using
-   Reflect.ownPropertyKeys() since ES6, and natively without a
-   reordering function by stringify() since ES11 (2020).  Property
-   creation order is a natural canonicalization, as it supports any
-   predefined logical ordering that one chooses by creating or inserting
-   the properties (fields) in that predefined order.  Other languages
-   have long supported ordered dictionaries or mappings that support
-   insertion order of the fields when serializing the mapping to/from
-   JSON. *_The canonical serialization problem for JSON is now a solved
-   problem._*
+2.  Derivation Protocol
 
    The self-addressing identifier derivation process is as follows:
 
@@ -164,7 +153,27 @@ Table of Contents
    the finished immutable contents, and therefore is not self-
    referential.
 
-2.  Conventions and Definitions
+2.1.  Serializations From Mappings
+
+   Insertion Order Preserving
+
+   The SAID derivation protocol assumes that the fields in a JSON
+   serialization are ordered in stable, round-trippable, reproducible
+   order, i.e., canonical.  The natural canonical ordering for JSON is
+   called property creation order or field insertion order.  This
+   logical ordering has been supported by the stringify() method in
+   JavaScript with a custom reordering function using
+   Reflect.ownPropertyKeys() since ES6, and natively without a
+   reordering function by stringify() since ES11 (2020).  Property
+   creation order is a natural canonicalization, as it supports any
+   predefined logical ordering that one chooses by creating or inserting
+   the properties (fields) in that predefined order.  Other languages
+   have long supported ordered dictionaries or mappings that support
+   insertion order of the fields when serializing the mapping to/from
+   JSON. *_The canonical serialization problem for JSON is now a solved
+   problem._*
+
+3.  Conventions and Definitions
 
    The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
    "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
@@ -172,15 +181,15 @@ Table of Contents
    BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
    capitals, as shown here.
 
-3.  Security Considerations
+4.  Security Considerations
 
    TODO Security
 
-4.  IANA Considerations
+5.  IANA Considerations
 
    This document has no IANA actions.
 
-5.  Normative References
+6.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
