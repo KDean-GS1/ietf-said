@@ -35,14 +35,15 @@ Abstract
    SAIDs are encoded with CESR (Composable Event Streaming
    Representation) which includes a pre-pended derivation code that
    encodes the cryptographic suite or algorithm used to generate the
-   digest.  CESR primitives alone or in combination primary expression
-   is textual using Base64 URL Safe characters but may be round-tripped
-   alone or in combination to a more compact binary representation
-   without loss.  The CESR derivation code enables cryptographic digest
-   algorithm agility in systems that use SAIDs as content addresses.
-   Each serialization may use a different cryptographic digest algorithm
-   as indicated by its derivation code.  This provides interoperable
-   future proofing.
+   digest.  ACESR primitive's primary expression (alone or in
+   combination ) is textual using Base64 URL Safe characters.  CESR
+   primitives may be round-tripped (alone or in combination) to a
+   compact binary representation without loss.  The CESR derivation code
+   enables cryptographic digest algorithm agility in systems that use
+   SAIDs as content addresses.  Each serialization may use a different
+   cryptographic digest algorithm as indicated by its derivation code.
+   This provides interoperable future proofing.  CESR was developed for
+   the [KERI] protocol.
 
 Discussion Venues
 
