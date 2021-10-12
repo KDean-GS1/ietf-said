@@ -1225,11 +1225,11 @@ The Blake2-256 digest is then computed on the above string and encoded in <code>
 <p id="section-2.1-5"><code>
 E8wYuBjhslETYaLZcxMkWrhVbMcA8RS1pKYl7nJ77ntA
 </code><a href="#section-2.1-5" class="pilcrow">¶</a></p>
-<p id="section-2.1-6">The dummy string is then replaced with the <code>SAID</code> above to generated the final serialization with embedded <code>SAID</code> as follows:
-<code>
+<p id="section-2.1-6">The dummy string is then replaced with the <code>SAID</code> above to generated the final serialization with embedded <code>SAID</code> as follows:<a href="#section-2.1-6" class="pilcrow">¶</a></p>
+<p id="section-2.1-7"><code>
 field0______E8wYuBjhslETYaLZcxMkWrhVbMcA8RS1pKYl7nJ77ntA______
-</code><a href="#section-2.1-6" class="pilcrow">¶</a></p>
-<p id="section-2.1-7">To verify the embedded <code>SAID</code> with respect to its encompassing serialization above, just reverse the generation steps.<a href="#section-2.1-7" class="pilcrow">¶</a></p>
+</code><a href="#section-2.1-7" class="pilcrow">¶</a></p>
+<p id="section-2.1-8">To verify the embedded <code>SAID</code> with respect to its encompassing serialization above, just reverse the generation steps.<a href="#section-2.1-8" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="serialization-generation">
@@ -1258,38 +1258,38 @@ field0______E8wYuBjhslETYaLZcxMkWrhVbMcA8RS1pKYl7nJ77ntA______
 <a href="#section-2.3" class="section-number selfRef">2.3. </a><a href="#name-example-python-dict-to-json" class="section-name selfRef">Example Python dict to JSON Serializaion with SAID</a>
         </h3>
 <p id="section-2.3-1">Suppose the initial value of a Python <code>dict</code> is as follows:<a href="#section-2.3-1" class="pilcrow">¶</a></p>
-<p id="section-2.3-2">```python<a href="#section-2.3-2" class="pilcrow">¶</a></p>
-<p id="section-2.3-3">{
+<p id="section-2.3-2">```
+{
     "said": "",
     "first": "Sue",
     "last": "Smith",
     "role": "Founder",
-}<a href="#section-2.3-3" class="pilcrow">¶</a></p>
-<p id="section-2.3-4">```<a href="#section-2.3-4" class="pilcrow">¶</a></p>
-<p id="section-2.3-5">As before the <code>SAID</code> will be a 44 character CESR encoded Blake-256 digest. The serialization will be <em>JSON</em>. The <code>said</code> field value in the <code>dict</code> is to be populated with the resulting <code>SAID</code>. First the value of the <code>said</code> field is replaced with a 44 character dummy string as follows:<a href="#section-2.3-5" class="pilcrow">¶</a></p>
-<p id="section-2.3-6">```python<a href="#section-2.3-6" class="pilcrow">¶</a></p>
-<p id="section-2.3-7">{
+}<a href="#section-2.3-2" class="pilcrow">¶</a></p>
+<p id="section-2.3-3">```<a href="#section-2.3-3" class="pilcrow">¶</a></p>
+<p id="section-2.3-4">As before the <code>SAID</code> will be a 44 character CESR encoded Blake-256 digest. The serialization will be <em>JSON</em>. The <code>said</code> field value in the <code>dict</code> is to be populated with the resulting <code>SAID</code>. First the value of the <code>said</code> field is replaced with a 44 character dummy string as follows:<a href="#section-2.3-4" class="pilcrow">¶</a></p>
+<p id="section-2.3-5">```
+{
     'said': '############################################',
     'first': 'Sue',
     'last': 'Smith',
     'role': 'Founder',
-}<a href="#section-2.3-7" class="pilcrow">¶</a></p>
-<p id="section-2.3-8">```
-The <code>dict</code> is then serialized into JSON with no extra whitespace. The serialization is the following string:<a href="#section-2.3-8" class="pilcrow">¶</a></p>
-<p id="section-2.3-9"><code>JSON
+}<a href="#section-2.3-5" class="pilcrow">¶</a></p>
+<p id="section-2.3-6">```
+The <code>dict</code> is then serialized into JSON with no extra whitespace. The serialization is the following string:<a href="#section-2.3-6" class="pilcrow">¶</a></p>
+<p id="section-2.3-7"><code>
 {"said":"############################################","first":"Sue","last":"Smith","role":"Founder"}
-</code><a href="#section-2.3-9" class="pilcrow">¶</a></p>
-<p id="section-2.3-10">The Blake3-256 digest is then computed on that serialization above and encoded in <code>CESR</code> to provide the <code>SAID</code> as follows:
-<code>
+</code><a href="#section-2.3-7" class="pilcrow">¶</a></p>
+<p id="section-2.3-8">The Blake3-256 digest is then computed on that serialization above and encoded in <code>CESR</code> to provide the <code>SAID</code> as follows:<a href="#section-2.3-8" class="pilcrow">¶</a></p>
+<p id="section-2.3-9"><code>
 EnKa0ALimLL8eQdZGzglJG_SxvncxkmvwFDhIyLFchUk
-</code><a href="#section-2.3-10" class="pilcrow">¶</a></p>
-<p id="section-2.3-11">The value of the <code>said</code> field is now replaced with the computed and encoded <code>SAID</code> to produce the final serialization with embedded <code>SAID</code> as follows:
-<code>JSON
+</code><a href="#section-2.3-9" class="pilcrow">¶</a></p>
+<p id="section-2.3-10">The value of the <code>said</code> field is now replaced with the computed and encoded <code>SAID</code> to produce the final serialization with embedded <code>SAID</code> as follows:<a href="#section-2.3-10" class="pilcrow">¶</a></p>
+<p id="section-2.3-11"><code>
 {"said":"EnKa0ALimLL8eQdZGzglJG_SxvncxkmvwFDhIyLFchUk","first":"Sue","last":"Smith","role":"Founder"}
 </code><a href="#section-2.3-11" class="pilcrow">¶</a></p>
-<p id="section-2.3-12">The final serialization may be converted to a python <code>dict</code> by deserializing the JSON to produce:
-```python<a href="#section-2.3-12" class="pilcrow">¶</a></p>
-<p id="section-2.3-13">{
+<p id="section-2.3-12">The final serialization may be converted to a python <code>dict</code> by deserializing the JSON to produce:<a href="#section-2.3-12" class="pilcrow">¶</a></p>
+<p id="section-2.3-13">```
+{
     'said': 'EnKa0ALimLL8eQdZGzglJG_SxvncxkmvwFDhIyLFchUk',
     'first': 'Sue',
     'last': 'Smith',

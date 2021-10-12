@@ -243,6 +243,7 @@ Table of Contents
 
    The dummy string is then replaced with the SAID above to generated
    the final serialization with embedded SAID as follows:
+
    field0______E8wYuBjhslETYaLZcxMkWrhVbMcA8RS1pKYl7nJ77ntA______
 
    To verify the embedded SAID with respect to its encompassing
@@ -326,9 +327,8 @@ Table of Contents
 
    Suppose the initial value of a Python dict is as follows:
 
-   ```python
-
-   { "said": "", "first": "Sue", "last": "Smith", "role": "Founder", }
+   ``` { "said": "", "first": "Sue", "last": "Smith", "role": "Founder",
+   }
 
    ```
 
@@ -338,31 +338,32 @@ Table of Contents
    of the said field is replaced with a 44 character dummy string as
    follows:
 
-   ```python
-
-   { 'said': '############################################', 'first':
-   'Sue', 'last': 'Smith', 'role': 'Founder', }
+   ``` { 'said': '############################################',
+   'first': 'Sue', 'last': 'Smith', 'role': 'Founder', }
 
    ``` The dict is then serialized into JSON with no extra whitespace.
    The serialization is the following string:
 
-   JSON {"said":"############################################","first":"
-   Sue","last":"Smith","role":"Founder"}
+   {"said":"############################################","first":"Sue",
+   "last":"Smith","role":"Founder"}
 
    The Blake3-256 digest is then computed on that serialization above
    and encoded in CESR to provide the SAID as follows:
+
    EnKa0ALimLL8eQdZGzglJG_SxvncxkmvwFDhIyLFchUk
 
    The value of the said field is now replaced with the computed and
    encoded SAID to produce the final serialization with embedded SAID as
-   follows: JSON {"said":"EnKa0ALimLL8eQdZGzglJG_SxvncxkmvwFDhIyLFchUk",
-   "first":"Sue","last":"Smith","role":"Founder"}
+   follows:
+
+   {"said":"EnKa0ALimLL8eQdZGzglJG_SxvncxkmvwFDhIyLFchUk","first":"Sue",
+   "last":"Smith","role":"Founder"}
 
    The final serialization may be converted to a python dict by
-   deserializing the JSON to produce: ```python
+   deserializing the JSON to produce:
 
-   { 'said': 'EnKa0ALimLL8eQdZGzglJG_SxvncxkmvwFDhIyLFchUk', 'first':
-   'Sue', 'last': 'Smith', 'role': 'Founder' }
+   ``` { 'said': 'EnKa0ALimLL8eQdZGzglJG_SxvncxkmvwFDhIyLFchUk',
+   'first': 'Sue', 'last': 'Smith', 'role': 'Founder' }
 
    ```
 
