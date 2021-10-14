@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2021-10-12T00:16:32.028262+00:00",
+  "timestamp": "2021-10-14T00:15:24.421623+00:00",
   "repo": "WebOfTrust/ietf-said",
   "labels": [
     {
@@ -49,7 +49,32 @@
       "color": "ffffff"
     }
   ],
-  "issues": [],
+  "issues": [
+    {
+      "number": 12,
+      "id": "I_kwDOGMMYI849EgOk",
+      "title": "Quoted code",
+      "url": "https://github.com/WebOfTrust/ietf-said/issues/12",
+      "state": "OPEN",
+      "author": "martinthomson",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "In kramdown-rfc2629, code blocks are commented using ~~~ not ```.",
+      "createdAt": "2021-10-12T23:15:01Z",
+      "updatedAt": "2021-10-12T23:41:05Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "SmithSamuelM",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "thanks =)\n\n> On 12 Oct 2021, at 17:15 , Martin Thomson ***@***.***> wrote:\n> \n> \n> In kramdown-rfc2629, code blocks are commented using ~~~ not ```.\n> \n> \u2014\n> You are receiving this because you are subscribed to this thread.\n> Reply to this email directly, view it on GitHub <https://github.com/WebOfTrust/ietf-said/issues/12>, or unsubscribe <https://github.com/notifications/unsubscribe-auth/AAETEPKPFHRF7QXLGUZNUALUGS6P7ANCNFSM5F32S5KA>.\n> \n\n",
+          "createdAt": "2021-10-12T23:41:05Z",
+          "updatedAt": "2021-10-12T23:41:05Z"
+        }
+      ]
+    }
+  ],
   "pulls": [
     {
       "number": 1,
@@ -215,6 +240,146 @@
       "mergedBy": "SmithSamuelM",
       "mergeCommit": {
         "oid": "b23e6f15097ed035f1f6a628d133a0ea20353392"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 7,
+      "id": "PR_kwDOGMMYI84tC3fI",
+      "title": "0.0.8",
+      "url": "https://github.com/WebOfTrust/ietf-said/pull/7",
+      "state": "MERGED",
+      "author": "SmithSamuelM",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2021-10-12T00:38:57Z",
+      "updatedAt": "2021-10-12T00:39:40Z",
+      "baseRepository": "WebOfTrust/ietf-said",
+      "baseRefName": "main",
+      "baseRefOid": "b23e6f15097ed035f1f6a628d133a0ea20353392",
+      "headRepository": "SmithSamuelM/ietf-said",
+      "headRefName": "main",
+      "headRefOid": "682f72a223921fa9495d0842d0b8e52819236a33",
+      "closedAt": "2021-10-12T00:39:40Z",
+      "mergedAt": "2021-10-12T00:39:40Z",
+      "mergedBy": "SmithSamuelM",
+      "mergeCommit": {
+        "oid": "0dd720adfc86b8c2573ca0d459ffa05a742958d1"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 8,
+      "id": "PR_kwDOGMMYI84tC31r",
+      "title": "0.0.9",
+      "url": "https://github.com/WebOfTrust/ietf-said/pull/8",
+      "state": "MERGED",
+      "author": "SmithSamuelM",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2021-10-12T00:43:30Z",
+      "updatedAt": "2021-10-12T00:44:11Z",
+      "baseRepository": "WebOfTrust/ietf-said",
+      "baseRefName": "main",
+      "baseRefOid": "0dd720adfc86b8c2573ca0d459ffa05a742958d1",
+      "headRepository": "SmithSamuelM/ietf-said",
+      "headRefName": "main",
+      "headRefOid": "dbb19dca1c33630131b6d1dc81d52f0053556235",
+      "closedAt": "2021-10-12T00:44:11Z",
+      "mergedAt": "2021-10-12T00:44:11Z",
+      "mergedBy": "SmithSamuelM",
+      "mergeCommit": {
+        "oid": "e77073d66d4746b031770a9729b2b0e11331c5f5"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 9,
+      "id": "PR_kwDOGMMYI84tFDDx",
+      "title": "0.1.0",
+      "url": "https://github.com/WebOfTrust/ietf-said/pull/9",
+      "state": "MERGED",
+      "author": "SmithSamuelM",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2021-10-12T15:21:12Z",
+      "updatedAt": "2021-10-12T15:22:11Z",
+      "baseRepository": "WebOfTrust/ietf-said",
+      "baseRefName": "main",
+      "baseRefOid": "e77073d66d4746b031770a9729b2b0e11331c5f5",
+      "headRepository": "SmithSamuelM/ietf-said",
+      "headRefName": "main",
+      "headRefOid": "587db19c2b26c5abafe751b012862c16453e9359",
+      "closedAt": "2021-10-12T15:22:11Z",
+      "mergedAt": "2021-10-12T15:22:11Z",
+      "mergedBy": "SmithSamuelM",
+      "mergeCommit": {
+        "oid": "1c30b9a0a72ab37e6bd810948d78b1cbcc1ed62c"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 10,
+      "id": "PR_kwDOGMMYI84tFQs0",
+      "title": "0.1.1 Fix typo",
+      "url": "https://github.com/WebOfTrust/ietf-said/pull/10",
+      "state": "MERGED",
+      "author": "SmithSamuelM",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2021-10-12T16:29:17Z",
+      "updatedAt": "2021-10-12T16:30:01Z",
+      "baseRepository": "WebOfTrust/ietf-said",
+      "baseRefName": "main",
+      "baseRefOid": "1c30b9a0a72ab37e6bd810948d78b1cbcc1ed62c",
+      "headRepository": "SmithSamuelM/ietf-said",
+      "headRefName": "main",
+      "headRefOid": "e862708e6cebf6604d44da1d9b992ca0f3db0337",
+      "closedAt": "2021-10-12T16:30:01Z",
+      "mergedAt": "2021-10-12T16:30:01Z",
+      "mergedBy": "SmithSamuelM",
+      "mergeCommit": {
+        "oid": "f602a9989a3962dce00e14b752b4a4faf6b51482"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 11,
+      "id": "PR_kwDOGMMYI84tFqxQ",
+      "title": "Update CONTRIBUTING.md",
+      "url": "https://github.com/WebOfTrust/ietf-said/pull/11",
+      "state": "MERGED",
+      "author": "SmithSamuelM",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2021-10-12T18:38:33Z",
+      "updatedAt": "2021-10-12T18:38:38Z",
+      "baseRepository": "WebOfTrust/ietf-said",
+      "baseRefName": "main",
+      "baseRefOid": "f602a9989a3962dce00e14b752b4a4faf6b51482",
+      "headRepository": "WebOfTrust/ietf-said",
+      "headRefName": "SmithSamuelM-patch-1",
+      "headRefOid": "b617eb7d5e98b77acdfb4c8cb1bbedf49ba02388",
+      "closedAt": "2021-10-12T18:38:38Z",
+      "mergedAt": "2021-10-12T18:38:38Z",
+      "mergedBy": "SmithSamuelM",
+      "mergeCommit": {
+        "oid": "494b4c822182a842057c31f28cb300ab222c11ba"
       },
       "comments": [],
       "reviews": []
