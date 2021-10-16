@@ -4,8 +4,8 @@
 
 TODO Working Group                                              S. Smith
 Internet-Draft                                             ProSapien LLC
-Intended status: Informational                           12 October 2021
-Expires: 15 April 2022
+Intended status: Informational                           16 October 2021
+Expires: 19 April 2022
 
 
                    Self-Addressing IDentifier (SAID)
@@ -67,7 +67,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 15 April 2022.
+   This Internet-Draft will expire on 19 April 2022.
 
 Copyright Notice
 
@@ -237,6 +237,7 @@ Table of Contents
    follows:
 
    field0______############################################field2______
+
    The Blake2-256 digest is then computed on the above string and
    encoded in CESR format.  This gives the following SAID:
 
@@ -328,10 +329,12 @@ Table of Contents
 
    Suppose the initial value of a Python dict is as follows:
 
-   ``` { "said": "", "first": "Sue", "last": "Smith", "role": "Founder",
+   {
+       "said": "",
+       "first": "Sue",
+       "last": "Smith",
+       "role": "Founder",
    }
-
-   ```
 
    As before the SAID will be a 44 character CESR encoded Blake-256
    digest.  The serialization will be _JSON_. The said field value in
@@ -339,14 +342,17 @@ Table of Contents
    of the said field is replaced with a 44 character dummy string as
    follows:
 
-   ``` { 'said': '############################################',
-   'first': 'Sue', 'last': 'Smith', 'role': 'Founder', }
+   {
+       'said': '############################################',
+       'first': 'Sue',
+       'last': 'Smith',
+       'role': 'Founder',
+   }
 
-   ``` The dict is then serialized into JSON with no extra whitespace.
-   The serialization is the following string:
+   The dict is then serialized into JSON with no extra whitespace.  The
+   serialization is the following string:
 
-   {"said":"############################################","first":"Sue",
-   "last":"Smith","role":"Founder"}
+   {"said":"############################################","first":"Sue","last":"Smith","role":"Founder"}
 
    The Blake3-256 digest is then computed on that serialization above
    and encoded in CESR to provide the SAID as follows:
@@ -357,16 +363,17 @@ Table of Contents
    encoded SAID to produce the final serialization with embedded SAID as
    follows:
 
-   {"said":"EnKa0ALimLL8eQdZGzglJG_SxvncxkmvwFDhIyLFchUk","first":"Sue",
-   "last":"Smith","role":"Founder"}
+   {"said":"EnKa0ALimLL8eQdZGzglJG_SxvncxkmvwFDhIyLFchUk","first":"Sue","last":"Smith","role":"Founder"}
 
    The final serialization may be converted to a python dict by
    deserializing the JSON to produce:
 
-   ``` { 'said': 'EnKa0ALimLL8eQdZGzglJG_SxvncxkmvwFDhIyLFchUk',
-   'first': 'Sue', 'last': 'Smith', 'role': 'Founder' }
-
-   ```
+   {
+       'said': 'EnKa0ALimLL8eQdZGzglJG_SxvncxkmvwFDhIyLFchUk',
+       'first': 'Sue',
+       'last': 'Smith',
+       'role': 'Founder'
+   }
 
    The generation steps may be reversed to verify the embedded SAID.
    The SAID generation and verification protocol for mappings assumes
@@ -431,7 +438,7 @@ Table of Contents
 
 Acknowledgments
 
-   TODO acknowledge.
+   Members of the keripy development team and the ToIP ACDC WG.
 
 Author's Address
 
