@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2021-10-14T00:15:24.421623+00:00",
+  "timestamp": "2021-10-17T00:15:55.634618+00:00",
   "repo": "WebOfTrust/ietf-said",
   "labels": [
     {
@@ -380,6 +380,34 @@
       "mergedBy": "SmithSamuelM",
       "mergeCommit": {
         "oid": "494b4c822182a842057c31f28cb300ab222c11ba"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 13,
+      "id": "PR_kwDOGMMYI84tSFeF",
+      "title": "1.1.2",
+      "url": "https://github.com/WebOfTrust/ietf-said/pull/13",
+      "state": "MERGED",
+      "author": "SmithSamuelM",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2021-10-16T20:03:11Z",
+      "updatedAt": "2021-10-16T20:03:57Z",
+      "baseRepository": "WebOfTrust/ietf-said",
+      "baseRefName": "main",
+      "baseRefOid": "494b4c822182a842057c31f28cb300ab222c11ba",
+      "headRepository": "SmithSamuelM/ietf-said",
+      "headRefName": "main",
+      "headRefOid": "093e2293bba5eb55efffc68f31c8caf18c9f767c",
+      "closedAt": "2021-10-16T20:03:57Z",
+      "mergedAt": "2021-10-16T20:03:57Z",
+      "mergedBy": "SmithSamuelM",
+      "mergeCommit": {
+        "oid": "2a41edb4c428714e23ab5b54bd46ac1354268eab"
       },
       "comments": [],
       "reviews": []
