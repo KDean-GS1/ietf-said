@@ -7,14 +7,14 @@
 <title>Self-Addressing IDentifier (SAID)</title>
 <meta content="S. Smith" name="author">
 <meta content="
-       A  SAID  (Self-Addressing IDentifier) is a special type of content addressable identifier based on encoded cryptographic digest that is self-referential. The  SAID  derivation protocol defined herein enables verification that a given  SAID  is uniquely cryptographically bound to a serialization that includes the  SAID  as a field in that serialization. Embedding a  SAID  as a field in the associated serialization indicates a preferred content addressable identifier for that serialization that facilitates greater interoperability, reduced ambiguity, and enhanced security when reasoning about the serialization. Moreover given sufficient cryptographic strength, a cryptographic commitment such as a signature, digest, or another SAID, to a given SAID is essentially equivalent to a commitment to its associated serialization. Any change to the serialization invalidates its SAID thereby ensuring secure immutability evident reasoning with SAIDS about serializations or equivalently their  SAIDs . Thus  SAIDs  better facilitate immutably referenced data serializations for applications such as Verifiable Credentials or Ricardian Contracts. 
+       A  SAID  (Self-Addressing IDentifier) is a special type of content addressable identifier based on encoded cryptographic digest that is self-referential. The  SAID  derivation protocol defined herein enables verification that a given  SAID  is uniquely cryptographically bound to a serialization that includes the  SAID  as a field in that serialization. Embedding a  SAID  as a field in the associated serialization indicates a preferred content addressable identifier for that serialization that facilitates greater interoperability, reduced ambiguity, and enhanced security when reasoning about the serialization. Moreover given sufficient cryptographic strength, a cryptographic commitment such as a signature, digest, or another  SAID , to a given  SAID  is essentially equivalent to a commitment to its associated serialization. Any change to the serialization invalidates its  SAID  thereby ensuring secure immutability evident reasoning with  SAIDs  about serializations or equivalently their  SAIDs . Thus  SAIDs  better facilitate immutably referenced data serializations for applications such as Verifiable Credentials or Ricardian Contracts. 
        SAIDs  are encoded with  CESR  (Composable Event Streaming Representation) which includes a pre-pended derivation code that encodes the cryptographic suite or algorithm used to generate the digest. A  CESR  primitive's primary expression (alone or in combination ) is textual using Base64 URL Safe characters.  CESR  primitives may be round-tripped (alone or in combination) to a compact binary representation without loss. The  CESR  derivation code enables cryptographic digest algorithm agility in systems that use  SAIDs  as content addresses. Each serialization may use a different cryptographic digest algorithm as indicated by its derivation code. This provides interoperable future proofing.  CESR  was developed for the   protocol. 
     " name="description">
-<meta content="xml2rfc 3.10.0" name="generator">
+<meta content="xml2rfc 3.11.1" name="generator">
 <meta content="Internet-Draft" name="keyword">
 <meta content="draft-ssmith-said-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.10.0
+  xml2rfc 3.11.1
     Python 3.9.5
     appdirs 1.4.4
     ConfigArgParse 1.3
@@ -198,7 +198,8 @@
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-html {
+:root {
+  color-scheme: light dark;
   --background-color: #fff;
   --text-color: #222;
   --title-color: #191919;
@@ -208,20 +209,8 @@ html {
   --pilcrow-weak: #ddd;
   --pilcrow-strong: #bbb;
   --small-font-size: 14.5px;
+  --font-mono: 'Oxygen Mono', monospace;
   scrollbar-color: #bbb #eee;
-}
-@media (prefers-color-scheme: dark) {
-html {
-  --background-color: #121212;
-  --text-color: #f0f0f0;
-  --title-color: #fff;
-  --link-color: #4da4f0;
-  --highlight-color: #282828;
-  --line-color: #444;
-  --pilcrow-weak: #444;
-  --pilcrow-strong: #666;
-  scrollbar-color: #777 #333;
-}
 }
 body {
   max-width: 600px;
@@ -314,6 +303,10 @@ div {
 }
 svg {
   display: block;
+}
+/* font-family isn't space-separated, but =~ will have to do */
+svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
+  font-family: var(--font-mono);
 }
 .alignCenter.art-text {
   background-color: var(--highlight-color);
@@ -409,7 +402,7 @@ a.xref {
 /* Figures */
 tt, code, pre {
   background-color: var(--highlight-color);
-  font: 14px/22px 'Oxygen Mono', monospace;
+  font: 14px/22px var(--font-mono);
 }
 tt, code {
   /* changing the font for inline elements leads to different ascender
@@ -441,17 +434,22 @@ figcaption, caption {
   text-align: left;
 }
 @media screen {
-  pre {
+  pre, svg {
     display: inline-block;
     overflow-x: auto;
+  }
+  pre {
     max-width: 100%;
     width: calc(100% - 22px - 1em);
+  }
+  svg {
+    max-width: calc(100% - 22px - 1em);
   }
   figure pre {
     display: block;
     width: calc(100% - 25px);
   }
-  pre + .pilcrow {
+  pre + .pilcrow, svg + .pilcrow {
     display: inline-block;
     vertical-align: text-bottom;
     padding-bottom: 8px;
@@ -465,9 +463,6 @@ aside, blockquote {
   font-style: italic;
 }
 blockquote {
-  background-color: var(--highlight-color);
-  border: 1px solid var(--line-color);
-  border-radius: 3px;
   margin: 1em 0;
 }
 cite {
@@ -1010,6 +1005,34 @@ address div.right {
   font-weight: bold;
   font-size: 0.9em;
 }
+
+/* Dark mode. */
+@media (prefers-color-scheme: dark) {
+:root {
+  --background-color: #121212;
+  --text-color: #f0f0f0;
+  --title-color: #fff;
+  --link-color: #4da4f0;
+  --highlight-color: #282828;
+  --line-color: #444;
+  --pilcrow-weak: #444;
+  --pilcrow-strong: #666;
+  scrollbar-color: #777 #333;
+}
+/* Trick: a prefix match works because only black and white are allowed */
+svg [stroke="black"], svg [stroke^="#000"] {
+  stroke: var(--text-color);
+}
+svg [stroke="white"], svg [stroke^="#fff"] {
+  stroke: var(--background-color);
+}
+svg [fill="black"], svg [fill^="#000"], svg :not([fill]) {
+  fill: var(--text-color);
+}
+svg [stroke="fill"], svg [fill^="#fff"] {
+  fill: var(--background-color);
+}
+}
 </style>
 
 </head>
@@ -1018,11 +1041,11 @@ address div.right {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">SAID</td>
-<td class="right">October 2021</td>
+<td class="right">November 2021</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Smith</td>
-<td class="center">Expires 19 April 2022</td>
+<td class="center">Expires 12 May 2022</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1035,12 +1058,12 @@ address div.right {
 <dd class="internet-draft">draft-ssmith-said-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2021-10-16" class="published">16 October 2021</time>
+<time datetime="2021-11-08" class="published">8 November 2021</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2022-04-19">19 April 2022</time></dd>
+<dd class="expires"><time datetime="2022-05-12">12 May 2022</time></dd>
 <dt class="label-authors">Author:</dt>
 <dd class="authors">
 <div class="author">
@@ -1053,7 +1076,7 @@ address div.right {
 <h1 id="title">Self-Addressing IDentifier (SAID)</h1>
 <section id="section-abstract">
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
-<p id="section-abstract-1">A <code>SAID</code> (Self-Addressing IDentifier) is a special type of content addressable identifier based on encoded cryptographic digest that is self-referential. The <code>SAID</code> derivation protocol defined herein enables verification that a given <code>SAID</code> is uniquely cryptographically bound to a serialization that includes the <code>SAID</code> as a field in that serialization. Embedding a <code>SAID</code> as a field in the associated serialization indicates a preferred content addressable identifier for that serialization that facilitates greater interoperability, reduced ambiguity, and enhanced security when reasoning about the serialization. Moreover given sufficient cryptographic strength, a cryptographic commitment such as a signature, digest, or another SAID, to a given SAID is essentially equivalent to a commitment to its associated serialization. Any change to the serialization invalidates its SAID thereby ensuring secure immutability evident reasoning with SAIDS about serializations or equivalently their <code>SAIDs</code>. Thus <code>SAIDs</code> better facilitate immutably referenced data serializations for applications such as Verifiable Credentials or Ricardian Contracts.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+<p id="section-abstract-1">A <code>SAID</code> (Self-Addressing IDentifier) is a special type of content addressable identifier based on encoded cryptographic digest that is self-referential. The <code>SAID</code> derivation protocol defined herein enables verification that a given <code>SAID</code> is uniquely cryptographically bound to a serialization that includes the <code>SAID</code> as a field in that serialization. Embedding a <code>SAID</code> as a field in the associated serialization indicates a preferred content addressable identifier for that serialization that facilitates greater interoperability, reduced ambiguity, and enhanced security when reasoning about the serialization. Moreover given sufficient cryptographic strength, a cryptographic commitment such as a signature, digest, or another <code>SAID</code>, to a given <code>SAID</code> is essentially equivalent to a commitment to its associated serialization. Any change to the serialization invalidates its <code>SAID</code> thereby ensuring secure immutability evident reasoning with <code>SAIDs</code> about serializations or equivalently their <code>SAIDs</code>. Thus <code>SAIDs</code> better facilitate immutably referenced data serializations for applications such as Verifiable Credentials or Ricardian Contracts.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
 <p id="section-abstract-2"><code>SAIDs</code> are encoded with <code>CESR</code> (Composable Event Streaming Representation) which includes a pre-pended derivation code that encodes the cryptographic suite or algorithm used to generate the digest. A <code>CESR</code> primitive's primary expression (alone or in combination ) is textual using Base64 URL Safe characters. <code>CESR</code> primitives may be round-tripped (alone or in combination) to a compact binary representation without loss. The <code>CESR</code> derivation code enables cryptographic digest algorithm agility in systems that use <code>SAIDs</code> as content addresses. Each serialization may use a different cryptographic digest algorithm as indicated by its derivation code. This provides interoperable future proofing. <code>CESR</code> was developed for the <span>[<a href="#KERI" class="xref">KERI</a>]</span> protocol.<a href="#section-abstract-2" class="pilcrow">¶</a></p>
 </section>
 <section class="note rfcEditorRemove" id="section-note.1">
@@ -1083,7 +1106,7 @@ address div.right {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 19 April 2022.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 12 May 2022.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1101,9 +1124,9 @@ address div.right {
             publication of this document. Please review these documents
             carefully, as they describe your rights and restrictions with
             respect to this document. Code Components extracted from this
-            document must include Simplified BSD License text as described in
+            document must include Revised BSD License text as described in
             Section 4.e of the Trust Legal Provisions and are provided without
-            warranty as described in the Simplified BSD License.<a href="#section-boilerplate.2-2" class="pilcrow">¶</a></p>
+            warranty as described in the Revised BSD License.<a href="#section-boilerplate.2-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="toc">
@@ -1133,7 +1156,10 @@ address div.right {
                 <p id="section-toc.1-1.2.2.3.1"><a href="#section-2.3" class="xref">2.3</a>.  <a href="#name-example-python-dict-to-json" class="xref">Example Python dict to JSON Serializaion with SAID</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.4">
-                <p id="section-toc.1-1.2.2.4.1"><a href="#section-2.4" class="xref">2.4</a>.  <a href="#name-discussion" class="xref">Discussion</a></p>
+                <p id="section-toc.1-1.2.2.4.1"><a href="#section-2.4" class="xref">2.4</a>.  <a href="#name-example-schema-immutability" class="xref">Example Schema Immutability using JSON Schema with SAIDs</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.5">
+                <p id="section-toc.1-1.2.2.5.1"><a href="#section-2.5" class="xref">2.5</a>.  <a href="#name-discussion" class="xref">Discussion</a></p>
 </li>
             </ul>
 </li>
@@ -1184,28 +1210,28 @@ address div.right {
       <h2 id="name-generation-and-verification">
 <a href="#section-2" class="section-number selfRef">2. </a><a href="#name-generation-and-verification" class="section-name selfRef">Generation and Verification Protocols</a>
       </h2>
-<p id="section-2-1">The <em>self-addressing identifier</em> (SAID) generation protocol is as follows:<a href="#section-2-1" class="pilcrow">¶</a></p>
+<p id="section-2-1">The <em>self-addressing identifier</em> (<code>SAID</code>) generation protocol is as follows:<a href="#section-2-1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-2-2.1">Insert a dummy string of the same length as the eventually derived and CESR encoded SAID into the SAID field of a serialization. The dummy character is <code>#</code>, that is, ASCII 35 decimal (23 hex).<a href="#section-2-2.1" class="pilcrow">¶</a>
+<li class="normal" id="section-2-2.1">Insert a dummy string of the same length as the eventually derived and <code>CESR</code> encoded <code>SAID</code> into the <code>SAID</code> field of a serialization. The dummy character is <code>#</code>, that is, ASCII 35 decimal (23 hex).<a href="#section-2-2.1" class="pilcrow">¶</a>
 </li>
-        <li class="normal" id="section-2-2.2">Compute the digest of the serialization with the dummy value in the SAID field.<a href="#section-2-2.2" class="pilcrow">¶</a>
+        <li class="normal" id="section-2-2.2">Compute the digest of the serialization with the dummy value in the <code>SAID</code> field.<a href="#section-2-2.2" class="pilcrow">¶</a>
 </li>
-        <li class="normal" id="section-2-2.3">Encode the computed digest with CESR (text fully qualified Base64) to create the final derived and encoded SAID of the same total length as the dummy string. This includes the derivation code for the digest algorithm used to compute the digest.<a href="#section-2-2.3" class="pilcrow">¶</a>
+        <li class="normal" id="section-2-2.3">Encode the computed digest with <code>CESR</code> (text fully qualified Base64) to create the final derived and encoded <code>SAID</code> of the same total length as the dummy string. This includes the derivation code for the digest algorithm used to compute the digest.<a href="#section-2-2.3" class="pilcrow">¶</a>
 </li>
-        <li class="normal" id="section-2-2.4">Replace the dummy string in the serialization with the encoded SAID string.<a href="#section-2-2.4" class="pilcrow">¶</a>
+        <li class="normal" id="section-2-2.4">Replace the dummy string in the serialization with the encoded <code>SAID</code> string.<a href="#section-2-2.4" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="section-2-3">The <em>self-addressing identifier</em> (SAID) verification protocol is as follows:<a href="#section-2-3" class="pilcrow">¶</a></p>
+<p id="section-2-3">The <em>self-addressing identifier</em> (<code>SAID</code>) verification protocol is as follows:<a href="#section-2-3" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-2-4.1">Make a copy of the embedded CESR encoded SAID string included in the serialization.<a href="#section-2-4.1" class="pilcrow">¶</a>
+<li class="normal" id="section-2-4.1">Make a copy of the embedded <code>CESR</code> encoded <code>SAID</code> string included in the serialization.<a href="#section-2-4.1" class="pilcrow">¶</a>
 </li>
-        <li class="normal" id="section-2-4.2">replace the SAID field value in the serialization with a dummy string of the same length. The dummy character is <code>#</code>, that is, ASCII 35 decimal (23 hex).<a href="#section-2-4.2" class="pilcrow">¶</a>
+        <li class="normal" id="section-2-4.2">replace the <code>SAID</code> field value in the serialization with a dummy string of the same length. The dummy character is <code>#</code>, that is, ASCII 35 decimal (23 hex).<a href="#section-2-4.2" class="pilcrow">¶</a>
 </li>
-        <li class="normal" id="section-2-4.3">Compute the digest of the serialization that includes the dummy value for the SAID field. Use the digest algorithm specified by the CESR derivation code of the copied SAID.<a href="#section-2-4.3" class="pilcrow">¶</a>
+        <li class="normal" id="section-2-4.3">Compute the digest of the serialization that includes the dummy value for the <code>SAID</code> field. Use the digest algorithm specified by the <code>CESR</code> derivation code of the copied <code>SAID</code>.<a href="#section-2-4.3" class="pilcrow">¶</a>
 </li>
-        <li class="normal" id="section-2-4.4">Encode the computed digest with CESR (text fully qualified Base64) to create the final derived and encoded SAID of the same total length as the dummy string and the copied embedded SAID.<a href="#section-2-4.4" class="pilcrow">¶</a>
+        <li class="normal" id="section-2-4.4">Encode the computed digest with CESR (text fully qualified Base64) to create the final derived and encoded SAID of the same total length as the dummy string and the copied embedded <code>SAID</code>.<a href="#section-2-4.4" class="pilcrow">¶</a>
 </li>
-        <li class="normal" id="section-2-4.5">Compare the copied SAID with the recomputed SAID. If they are identical then the verification is successful; otherwise unsuccessful.<a href="#section-2-4.5" class="pilcrow">¶</a>
+        <li class="normal" id="section-2-4.5">Compare the copied <code>SAID</code> with the recomputed <code>SAID</code>. If they are identical then the verification is successful; otherwise unsuccessful.<a href="#section-2-4.5" class="pilcrow">¶</a>
 </li>
       </ul>
 <div id="example-computation">
@@ -1213,7 +1239,7 @@ address div.right {
         <h3 id="name-example-computation">
 <a href="#section-2.1" class="section-number selfRef">2.1. </a><a href="#name-example-computation" class="section-name selfRef">Example Computation</a>
         </h3>
-<p id="section-2.1-1">The <code>CESR</code> encoding of a Blake3-256 (32 byte) binary digest has 44 Base-64 URL Safe characters. The first character is <code>E</code> which represents Blake3-256. Therefore, a serialization of a fixed field data structure with a SAID generated by a Blake3-256 digest must reserve a field of length 44 characters. Suppose the initial value of the fixed field serialization is the following string:<a href="#section-2.1-1" class="pilcrow">¶</a></p>
+<p id="section-2.1-1">The <code>CESR</code> encoding of a Blake3-256 (32 byte) binary digest has 44 Base-64 URL Safe characters. The first character is <code>E</code> which represents Blake3-256. Therefore, a serialization of a fixed field data structure with a <code>SAID</code> generated by a Blake3-256 digest must reserve a field of length 44 characters. Suppose the initial value of the fixed field serialization is the following string:<a href="#section-2.1-1" class="pilcrow">¶</a></p>
 <div class="alignLeft art-text artwork" id="section-2.1-2">
 <pre>
 field0______field1______________________________________field2______
@@ -1253,7 +1279,7 @@ field0______E8wYuBjhslETYaLZcxMkWrhVbMcA8RS1pKYl7nJ77ntA______
 <p id="section-2.2.1-1">The crucial consideration in <code>SAID</code> generation is reproducibility. This requires the ordering and sizing of fields in the serialization to be fixed. Data structures in most computer languages have fixed fields. The example above is such an example.<a href="#section-2.2.1-1" class="pilcrow">¶</a></p>
 <p id="section-2.2.1-2">A very useful type of serialization especially in some languages like Python or JavaScript is of self-describing data structures that are mappings of (key, value) or (label, value) pairs. These are often also called dictionaries or hash tables. The essential feature needed for reproducible serialization of such mappings is that mapping preserve the ordering of its fields on any round trip to/from a serialization. In other words the mapping is ordered with respect to serialization. Another way to describe a predefined order preserving serialization is canonicalization or canonical ordering. This is often referred to as the mapping canonicalization problem.<a href="#section-2.2.1-2" class="pilcrow">¶</a></p>
 <p id="section-2.2.1-3">The <em>natural</em> canonical ordering for such mappings is <em>insertion order</em> or sometimes called <em>field creation order</em>. Natural order allows the fields to appear in a given preset order independent of the lexicographic ordering of the labels. This enables functional or logical ordering of the fields. Logical ordering also allows the absence or presence of a field to have meaning. Fields may have a priority given by their relative order of appearance. Fields may be grouped in logical sequence for better usability and labels may use words that best reflect their function independent of their relative lexicographic ordering. The most popular serialization format for mappings is <em>JSON</em>. Other popular serializations for mappings are CBOR and MsgPack.<a href="#section-2.2.1-3" class="pilcrow">¶</a></p>
-<p id="section-2.2.1-4">In contract, from a functional perspective, lexicographic ordering appears un-natural. In lexicographic ordering the fields are sorted by label prior to serialization.  The problem with lexicographic ordering is that the relative order of appearance of the fields is determined by the labels themselves not some logical or functional purpose of the fields themselves. This often results in oddly labeled fields that are so named merely to ensure that the lexicographic ordering matches a given logical ordering.<a href="#section-2.2.1-4" class="pilcrow">¶</a></p>
+<p id="section-2.2.1-4">In contrast, from a functional perspective, lexicographic ordering appears un-natural. In lexicographic ordering the fields are sorted by label prior to serialization.  The problem with lexicographic ordering is that the relative order of appearance of the fields is determined by the labels themselves not some logical or functional purpose of the fields themselves. This often results in oddly labeled fields that are so named merely to ensure that the lexicographic ordering matches a given logical ordering.<a href="#section-2.2.1-4" class="pilcrow">¶</a></p>
 <p id="section-2.2.1-5">Originally mappings in most if not all computer languages were not insertion order preserving. The reason is that most mappings used hash tables under the hood. Early hash tables were highly efficient but by nature did not include any mechanism for preserving field creation or field insertion order for serialization. Fortunately this is no longer true in general. Most if not all computer languages that support dictionaries or mappings as first class data structures now support variations that are insertion order preserving.<a href="#section-2.2.1-5" class="pilcrow">¶</a></p>
 <p id="section-2.2.1-6">For example since version 3.6 the default <code>dict</code> object in Python is insertion order preserving. Before that Python 3.1 introduced the <code>OrderedDict</code> class which is insertion order preserving and before that custom classes existed in the wild for order preserving variants of a Python <code>dict</code>. Since version 1.9 the Ruby version of a <code>dict</code>, the <code>Hash</code> class is insertion order preserving. Javascript is a relative latecomer but since ECMAScript <code>ES6</code> the insertion ordering of JavaScript objects was preserved in <code>Reflect.ownPropertyKeys()</code>. Using custom <code>replacer</code> and <code>reviver</code> functions in <code>.stringify</code> and <code>.parse</code> allows one to serialize and de-serialize JavaScript objects in insertion order. Moreover since ES11 the native <code>.stringify</code> uses insertion order all text string labeled fields in Javascript objects. It is an uncommon use case to have non-text string labels in a mapping serialization. A list is usually a better structure in those cases. Nonetheless, since ES6 the new Javascript <code>Map</code> object preserves insertion order for all fields for all label types. Custom <code>replacer</code> and <code>reviver</code> functions for <code>.stringify</code> and <code>.parse</code> allows one to serialize and de-serialize Map objects to/from JSON in natural order preserving fashion. Consequently there is no need for any canonical serialization but natural insertion order preserving because one can always use lexicographic ordering to create the insertion order.<a href="#section-2.2.1-6" class="pilcrow">¶</a></p>
 </section>
@@ -1319,13 +1345,56 @@ EnKa0ALimLL8eQdZGzglJG_SxvncxkmvwFDhIyLFchUk
 <p id="section-2.3-13">The generation steps may be reversed to verify the embedded <code>SAID</code>. The <code>SAID</code> generation and verification protocol for mappings assumes that the fields in a mapping serialization such as JSON are ordered in stable, round-trippable, reproducible order, i.e., canonical. The natural canonical ordering is called <code>field insertion order</code>.<a href="#section-2.3-13" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="discussion">
+<div id="example-schema-immutability-using-json-schema-with-saids">
 <section id="section-2.4">
-        <h3 id="name-discussion">
-<a href="#section-2.4" class="section-number selfRef">2.4. </a><a href="#name-discussion" class="section-name selfRef">Discussion</a>
+        <h3 id="name-example-schema-immutability">
+<a href="#section-2.4" class="section-number selfRef">2.4. </a><a href="#name-example-schema-immutability" class="section-name selfRef">Example Schema Immutability using JSON Schema with SAIDs</a>
         </h3>
-<p id="section-2.4-1">As long as any verifier recognizes the derivation code of a <code>SAID</code>, the <code>SAID</code> is a cryptographically secure commitment to the contents in which it is embedded; it is a cryptographically verifiable, self-referential, content-addressable identifier. Because a <code>SAID</code> is both self-referential and cryptographically bound to the contents it identifies, anyone can validate this binding if they follow the <em>derivation protocol</em> outlined above.<a href="#section-2.4-1" class="pilcrow">¶</a></p>
-<p id="section-2.4-2">To elaborate, this approach of deriving self-referential identifiers from the contents they identify, is called <code>self-addressing</code>. It allows any validator to verify or re-derive the self-referential, self-addressing identifier given the contents it identifies. To clarify, a <code>SAID</code> is different from a standard content address or content-addressable identifier in that a standard content-addressable identifier may not be included inside the contents it addresses. Moreover, a standard content-addressable identifier is computed on the finished immutable contents, and therefore is not self-referential.<a href="#section-2.4-2" class="pilcrow">¶</a></p>
+<p id="section-2.4-1"><code>SAIDs</code> make <a href="https://json-schema.org/draft/2020-12/json-schema-core.html">JSON Schema</a> fully self-contained with self-referential, unambiguously cryptographically bound, and verifiable content-addressable identifiers. We apply the <code>SAID</code> derivation protocol defined above to generate the <code>$id</code> field.<a href="#section-2.4-1" class="pilcrow">¶</a></p>
+<p id="section-2.4-2">First, replace the value of the <code>$id</code> field with a string filled with dummy characters of the same length as the eventual derived value for <code>$id</code>.<a href="#section-2.4-2" class="pilcrow">¶</a></p>
+<div id="section-2.4-3">
+<pre class="lang-json sourcecode">
+    {
+        "$id": "############################################",
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+            "full_name": {
+            "type": "string"
+        }
+    }
+</pre><a href="#section-2.4-3" class="pilcrow">¶</a>
+</div>
+<p id="section-2.4-4">Second, make a digest of the serialized schema contents that include the dummy value for the <code>$id</code>.<a href="#section-2.4-4" class="pilcrow">¶</a></p>
+<div class="alignLeft art-text artwork" id="section-2.4-5">
+<pre>
+EZT9Idj7zLA0Ek6o8oevixdX20607CljNg4zrf_NQINY
+</pre><a href="#section-2.4-5" class="pilcrow">¶</a>
+</div>
+<p id="section-2.4-6">Third, replace the dummy identifier value with the derived identifier value in the schema contents.<a href="#section-2.4-6" class="pilcrow">¶</a></p>
+<div id="section-2.4-7">
+<pre class="lang-json sourcecode">
+    {
+        "$id": "EZT9Idj7zLA0Ek6o8oevixdX20607CljNg4zrf_NQINY",
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+            "full_name": {
+            "type": "string"
+        }
+    }
+</pre><a href="#section-2.4-7" class="pilcrow">¶</a>
+</div>
+<p id="section-2.4-8">Usages of <code>SAIDs</code> within authentic data containers as demonstrated here are referred to as <code>self-addressing data (SAD)</code>.<a href="#section-2.4-8" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="discussion">
+<section id="section-2.5">
+        <h3 id="name-discussion">
+<a href="#section-2.5" class="section-number selfRef">2.5. </a><a href="#name-discussion" class="section-name selfRef">Discussion</a>
+        </h3>
+<p id="section-2.5-1">As long as any verifier recognizes the derivation code of a <code>SAID</code>, the <code>SAID</code> is a cryptographically secure commitment to the contents in which it is embedded; it is a cryptographically verifiable, self-referential, content-addressable identifier. Because a <code>SAID</code> is both self-referential and cryptographically bound to the contents it identifies, anyone can validate this binding if they follow the <em>derivation protocol</em> outlined above.<a href="#section-2.5-1" class="pilcrow">¶</a></p>
+<p id="section-2.5-2">To elaborate, this approach of deriving self-referential identifiers from the contents they identify, is called <code>self-addressing</code>. It allows any validator to verify or re-derive the self-referential, self-addressing identifier given the contents it identifies. To clarify, a <code>SAID</code> is different from a standard content address or content-addressable identifier in that a standard content-addressable identifier may not be included inside the contents it addresses. Moreover, a standard content-addressable identifier is computed on the finished immutable contents, and therefore is not self-referential.<a href="#section-2.5-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1335,8 +1404,7 @@ EnKa0ALimLL8eQdZGzglJG_SxvncxkmvwFDhIyLFchUk
       <h2 id="name-conventions-and-definitions">
 <a href="#section-3" class="section-number selfRef">3. </a><a href="#name-conventions-and-definitions" class="section-name selfRef">Conventions and Definitions</a>
       </h2>
-<p id="section-3-1">The key words "<span class="bcp14">MUST</span>", "<span class="bcp14">MUST NOT</span>", "<span class="bcp14">REQUIRED</span>", "<span class="bcp14">SHALL</span>", "<span class="bcp14">SHALL</span>
-NOT", "<span class="bcp14">SHOULD</span>", "<span class="bcp14">SHOULD NOT</span>", "<span class="bcp14">RECOMMENDED</span>", "<span class="bcp14">NOT RECOMMENDED</span>",
+<p id="section-3-1">The key words "<span class="bcp14">MUST</span>", "<span class="bcp14">MUST NOT</span>", "<span class="bcp14">REQUIRED</span>", "<span class="bcp14">SHALL</span>", "<span class="bcp14">SHALL NOT</span>", "<span class="bcp14">SHOULD</span>", "<span class="bcp14">SHOULD NOT</span>", "<span class="bcp14">RECOMMENDED</span>", "<span class="bcp14">NOT RECOMMENDED</span>",
 "<span class="bcp14">MAY</span>", and "<span class="bcp14">OPTIONAL</span>" in this document are to be interpreted as
 described in BCP 14 <span>[<a href="#RFC2119" class="xref">RFC2119</a>]</span> <span>[<a href="#RFC8174" class="xref">RFC8174</a>]</span> when, and only when, they
 appear in all capitals, as shown here.<a href="#section-3-1" class="pilcrow">¶</a></p>
@@ -1369,11 +1437,11 @@ appear in all capitals, as shown here.<a href="#section-3-1" class="pilcrow">¶<
 <dl class="references">
 <dt id="RFC2119">[RFC2119]</dt>
         <dd>
-<span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/rfc2119">https://datatracker.ietf.org/doc/html/rfc2119</a>&gt;</span>. </dd>
+<span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc2119">https://www.rfc-editor.org/rfc/rfc2119</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC8174">[RFC8174]</dt>
       <dd>
-<span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/rfc8174">https://datatracker.ietf.org/doc/html/rfc8174</a>&gt;</span>. </dd>
+<span class="refAuthor">Leiba, B.</span>, <span class="refTitle">"Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 8174</span>, <span class="seriesInfo">DOI 10.17487/RFC8174</span>, <time datetime="2017-05" class="refDate">May 2017</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8174">https://www.rfc-editor.org/rfc/rfc8174</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
