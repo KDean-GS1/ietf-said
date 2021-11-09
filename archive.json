@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2021-11-04T00:16:42.400281+00:00",
+  "timestamp": "2021-11-09T00:15:55.960856+00:00",
   "repo": "WebOfTrust/ietf-said",
   "labels": [
     {
@@ -55,15 +55,15 @@
       "id": "I_kwDOGMMYI849EgOk",
       "title": "Quoted code",
       "url": "https://github.com/WebOfTrust/ietf-said/issues/12",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "martinthomson",
       "authorAssociation": "NONE",
       "assignees": [],
       "labels": [],
       "body": "In kramdown-rfc2629, code blocks are commented using ~~~ not ```.",
       "createdAt": "2021-10-12T23:15:01Z",
-      "updatedAt": "2021-10-12T23:41:05Z",
-      "closedAt": null,
+      "updatedAt": "2021-11-08T23:05:37Z",
+      "closedAt": "2021-11-08T23:05:37Z",
       "comments": [
         {
           "author": "SmithSamuelM",
@@ -417,24 +417,26 @@
       "id": "PR_kwDOGMMYI84t_vrZ",
       "title": "SAD updates",
       "url": "https://github.com/WebOfTrust/ietf-said/pull/14",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "m00sey",
       "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [],
       "body": "adds consistent formatting and an example section for Schema Immutability with JSON Schema and SAIDs",
       "createdAt": "2021-11-02T17:29:27Z",
-      "updatedAt": "2021-11-02T17:29:27Z",
+      "updatedAt": "2021-11-08T23:04:04Z",
       "baseRepository": "WebOfTrust/ietf-said",
       "baseRefName": "main",
       "baseRefOid": "2a41edb4c428714e23ab5b54bd46ac1354268eab",
       "headRepository": "m00sey/ietf-said",
       "headRefName": "main",
       "headRefOid": "84cc1e56e73b03744b0b73902f9d291280963dda",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2021-11-08T23:04:04Z",
+      "mergedAt": "2021-11-08T23:04:04Z",
+      "mergedBy": "SmithSamuelM",
+      "mergeCommit": {
+        "oid": "97b6df973ffa8d6ae7c9836cbdeed84861041fbc"
+      },
       "comments": [],
       "reviews": []
     }
