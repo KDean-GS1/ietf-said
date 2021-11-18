@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2021-11-09T00:15:55.960856+00:00",
+  "timestamp": "2021-11-18T00:17:07.152389+00:00",
   "repo": "WebOfTrust/ietf-said",
   "labels": [
     {
@@ -71,6 +71,44 @@
           "body": "thanks =)\n\n> On 12 Oct 2021, at 17:15 , Martin Thomson ***@***.***> wrote:\n> \n> \n> In kramdown-rfc2629, code blocks are commented using ~~~ not ```.\n> \n> \u2014\n> You are receiving this because you are subscribed to this thread.\n> Reply to this email directly, view it on GitHub <https://github.com/WebOfTrust/ietf-said/issues/12>, or unsubscribe <https://github.com/notifications/unsubscribe-auth/AAETEPKPFHRF7QXLGUZNUALUGS6P7ANCNFSM5F32S5KA>.\n> \n\n",
           "createdAt": "2021-10-12T23:41:05Z",
           "updatedAt": "2021-10-12T23:41:05Z"
+        }
+      ]
+    },
+    {
+      "number": 15,
+      "id": "I_kwDOGMMYI84-8YCL",
+      "title": "The reasoning behind placeholder string in the dict",
+      "url": "https://github.com/WebOfTrust/ietf-said/issues/15",
+      "state": "OPEN",
+      "author": "blelump",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Hi Sam,\r\n\r\nin the spec section 2.3 ( https://weboftrust.github.io/ietf-said/draft-ssmith-said.html#section-2.3 ) provides an example of calculating digest of an object (dict). \r\n\r\nWhy do you use the placeholder string in the payload that goes to hashing function? In essence what is the difference of having:\r\n```\r\ndigest({\r\n    'said': '############################################',\r\n    'first': 'Sue',\r\n    'last': 'Smith',\r\n    'role': 'Founder',\r\n})\r\n```\r\nvs.\r\n```\r\ndigest({\r\n    'first': 'Sue',\r\n    'last': 'Smith',\r\n    'role': 'Founder',\r\n})\r\n```\r\nI mean, yes, both digests will be different, but what's the advantage of including the `'said': '############################################',` in the object-to-be-hashed? Is this somehow related to performance or some other case?\r\n",
+      "createdAt": "2021-11-17T11:25:02Z",
+      "updatedAt": "2021-11-17T19:25:55Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "SmithSamuelM",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "For some applications of the SAID the length of the serialization must be stable or fixed or it is not parsable. This is true when multiple serialization types are supported via some field in the data structure that provides the length of the serializaiton. For example the `v` version field in KERI and ACDC provides the length of the serialized data structure (SAD) so that  parser knows how many characters to extract from a stream for parsing. The `v` field value MUST be fixed before the digest is computed in order that the length of the serialization before and after the digest is computed ans SAID field value assigned,  be exactly the same. So using dummy characters ensures this. Using dummy characters provides more generic support for all types of SADs. Changing the length breaks any application that includes length information in the digested SAD.",
+          "createdAt": "2021-11-17T14:09:37Z",
+          "updatedAt": "2021-11-17T14:19:37Z"
+        },
+        {
+          "author": "blelump",
+          "authorAssociation": "NONE",
+          "body": "Thanks. Clear.\r\n\r\nYou've probably thought about that before, but let me ask: due to the `v` attribute existence in the upper layer (the messages), the SAID spec is tailored to always contain a dummy string, even when you don't have any attribute that is length dependent (ie. above example from section 2.3 of the spec). Shall it be constrained like this? \r\n\r\n",
+          "createdAt": "2021-11-17T18:07:05Z",
+          "updatedAt": "2021-11-17T18:07:05Z"
+        },
+        {
+          "author": "SmithSamuelM",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Its just simpler to have one spec and not options. The dummy string doesn\u2019t have any downside that I can see even for applications where the size doesn\u2019t matter.  Too much flexibility is a bad thing. Numerous malleability attacks arise from allowing size variation. So its just good practice to fix the serialization size for the digest.",
+          "createdAt": "2021-11-17T19:25:55Z",
+          "updatedAt": "2021-11-17T19:25:55Z"
         }
       ]
     }
