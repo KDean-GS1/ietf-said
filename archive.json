@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2021-11-18T00:17:07.152389+00:00",
+  "timestamp": "2021-11-21T00:17:16.492098+00:00",
   "repo": "WebOfTrust/ietf-said",
   "labels": [
     {
@@ -79,15 +79,15 @@
       "id": "I_kwDOGMMYI84-8YCL",
       "title": "The reasoning behind placeholder string in the dict",
       "url": "https://github.com/WebOfTrust/ietf-said/issues/15",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "blelump",
       "authorAssociation": "NONE",
       "assignees": [],
       "labels": [],
       "body": "Hi Sam,\r\n\r\nin the spec section 2.3 ( https://weboftrust.github.io/ietf-said/draft-ssmith-said.html#section-2.3 ) provides an example of calculating digest of an object (dict). \r\n\r\nWhy do you use the placeholder string in the payload that goes to hashing function? In essence what is the difference of having:\r\n```\r\ndigest({\r\n    'said': '############################################',\r\n    'first': 'Sue',\r\n    'last': 'Smith',\r\n    'role': 'Founder',\r\n})\r\n```\r\nvs.\r\n```\r\ndigest({\r\n    'first': 'Sue',\r\n    'last': 'Smith',\r\n    'role': 'Founder',\r\n})\r\n```\r\nI mean, yes, both digests will be different, but what's the advantage of including the `'said': '############################################',` in the object-to-be-hashed? Is this somehow related to performance or some other case?\r\n",
       "createdAt": "2021-11-17T11:25:02Z",
-      "updatedAt": "2021-11-17T19:25:55Z",
-      "closedAt": null,
+      "updatedAt": "2021-11-18T14:13:44Z",
+      "closedAt": "2021-11-18T14:13:44Z",
       "comments": [
         {
           "author": "SmithSamuelM",
@@ -109,6 +109,13 @@
           "body": "Its just simpler to have one spec and not options. The dummy string doesn\u2019t have any downside that I can see even for applications where the size doesn\u2019t matter.  Too much flexibility is a bad thing. Numerous malleability attacks arise from allowing size variation. So its just good practice to fix the serialization size for the digest.",
           "createdAt": "2021-11-17T19:25:55Z",
           "updatedAt": "2021-11-17T19:25:55Z"
+        },
+        {
+          "author": "blelump",
+          "authorAssociation": "NONE",
+          "body": "Got it.\r\n\r\nClosing.",
+          "createdAt": "2021-11-18T14:13:44Z",
+          "updatedAt": "2021-11-18T14:13:44Z"
         }
       ]
     }
