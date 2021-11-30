@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2021-11-21T00:17:16.492098+00:00",
+  "timestamp": "2021-11-30T00:16:48.390210+00:00",
   "repo": "WebOfTrust/ietf-said",
   "labels": [
     {
@@ -481,6 +481,34 @@
       "mergedBy": "SmithSamuelM",
       "mergeCommit": {
         "oid": "97b6df973ffa8d6ae7c9836cbdeed84861041fbc"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 16,
+      "id": "PR_kwDOGMMYI84vGScA",
+      "title": "Addded normative reference for CESR",
+      "url": "https://github.com/WebOfTrust/ietf-said/pull/16",
+      "state": "MERGED",
+      "author": "SmithSamuelM",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2021-11-28T21:32:55Z",
+      "updatedAt": "2021-11-28T21:33:44Z",
+      "baseRepository": "WebOfTrust/ietf-said",
+      "baseRefName": "main",
+      "baseRefOid": "97b6df973ffa8d6ae7c9836cbdeed84861041fbc",
+      "headRepository": "SmithSamuelM/ietf-said",
+      "headRefName": "main",
+      "headRefOid": "dd66a8257bbc3b6f4ac07573ad9974800e0a389f",
+      "closedAt": "2021-11-28T21:33:44Z",
+      "mergedAt": "2021-11-28T21:33:44Z",
+      "mergedBy": "SmithSamuelM",
+      "mergeCommit": {
+        "oid": "7b52b19436c9e2f44c3ddee3fe1af1b6d0804fff"
       },
       "comments": [],
       "reviews": []
